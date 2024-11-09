@@ -89,7 +89,7 @@ class SudokuGA(object):
 
                 # Check if problem is solved and print best and worst results
                 if best_score > 0:
-                    print("Problem not solved on generation {} (restarted {} times). Best solution score is {} and "
+                    print("Problem not solved on generation {} (restarted {} times). Best fitness score is {} and "
                           "worst is {}".format(nb_generations_done, restart_counter, best_score, worst_score))
                     # Not solved => select a new generation among this ranked population
                     # Retain only the percentage specified by selection rate
@@ -129,9 +129,9 @@ class SudokuGA(object):
                             "well adapted to fit the population")
 
         values_to_set = file_loader.load_file_as_values(self._model_to_solve)
-        zeros_to_count = '0' if len(values_to_set) < 82 else '00'
-        print("The solution we have to solve is: (nb values to find = {})".format(values_to_set.count(zeros_to_count)))
-
+        zeros_to_count = '0' if len(values_to_set) < 82 else '00'   # for case when cells has a number with 2 digits
+        print("The given {}x{} sudoku board is: (# of values to find = {})".format(int(len(values_to_set) ** 0.5), int(len(values_to_set) ** 0.5),values_to_set.count(zeros_to_count)))
+        
         self._start_time = time()
         s = Sudoku(values_to_set)
         s.display()

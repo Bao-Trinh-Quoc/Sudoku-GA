@@ -3,7 +3,6 @@ Created on 08/11/2024
 
 """
 import argparse
-from ast import literal_eval
 
 from classes.sudoku_ga import SudokuGA
 
