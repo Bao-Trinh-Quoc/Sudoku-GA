@@ -10,12 +10,26 @@ To run the Sudoku solver, use the following command:
 ```sh
 python3 main.py --population-size 10000 --selection-rate 0.2 --random-selection-rate 0.2 --children 5 --mutation-rate 0.3 --max-generations 500 --model 9x9-easy-03 --restart-nb-generations 40
 ```
+Adapt the parameters to your needs. 
+
 To generate a new Sudoku puzzle, use the following command:
 
 ```sh
 cd sudoku_utils
 python3 generate_board.py
 ```
+## Directory and File Structure
+
+```
+project
+    │_ classes (contains the classes used in the project)
+    |_ samples (contains the Sudoku puzzles)
+    |_ sudoku_utils (contains ultility functions for sudoku, GA and board generation)
+    |_ general_utils (contains general utility functions used for the project)
+    main.py (main script to run the program)
+    README.md
+```
+
 
 ## Acknowledgements
 https://nidragedd.github.io/sudoku-genetics/ <br>
