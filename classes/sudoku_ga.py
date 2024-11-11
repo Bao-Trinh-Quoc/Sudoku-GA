@@ -7,7 +7,7 @@ from time import time
 
 from classes.sudoku import Sudoku
 from sudoku_utils import ga_utils
-from general_utils import file_loader, tools
+from general_utils import file_loader, tools, graph
 
 class SudokuGA(object):
     _population_size = None
@@ -118,6 +118,9 @@ class SudokuGA(object):
             best_solution.display()
             print("Worst is:")
             worst_solution.display()
+        
+        graph.plot_graph(best_data, worst_data, tools.get_readable_time(self._start_time, time()))
+
 
     def _load(self):
         """
@@ -129,7 +132,7 @@ class SudokuGA(object):
                             "well adapted to fit the population")
 
         values_to_set = file_loader.load_file_as_values(self._model_to_solve)
-        zeros_to_count = '0' if len(values_to_set) < 82 else '00'   # for case when cells has a number with 2 digits
+        zeros_to_count = '0' if len(values_to_set) < 82 else '00'   # In case when cells has a number with 2 digits
         print("The given {}x{} sudoku board is: (# of values to find = {})".format(int(len(values_to_set) ** 0.5), int(len(values_to_set) ** 0.5),values_to_set.count(zeros_to_count)))
         
         self._start_time = time()

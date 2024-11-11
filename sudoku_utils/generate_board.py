@@ -65,7 +65,7 @@ def main():
         print("Invalid size. The size must be a perfect square (e.g., 4, 9, 16).")
         return
 
-    num_holes = int(input("Enter the number of holes(the lower the holes, the easier the puzzle) to create in the puzzle: "))
+    num_holes = int(input("Enter the number of holes(the higher the holes, the easier the puzzle) to create in the puzzle: "))
     board = generate_filled_board(size)
     board = remove_numbers(board, size, num_holes)
     filename = f"samples/{size}x{size}-created_puzzle.txt"

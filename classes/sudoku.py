@@ -63,8 +63,7 @@ class Sudoku(object):
             self._columns[i] = []
             self._grids[i] = []
 
-        # In the above section we determine, according to the position in the given values, in which
-        # column, row and grid the value belongs to
+        # Determine rows, columns and grids id and fill the dicts
         position = 0
         for character in values:
             val = int(character)
@@ -90,7 +89,7 @@ class Sudoku(object):
         :return: a objects with grids all filled with available values and no duplicates. But there might (for sure
         there will) be some duplicates in rows/columns.
         """
-        # Ensure that at least grids are 'correct' so we fill each one with available values to avoid duplicates
+        # Ensure that at least grids are 'correct' so fill each one with available values to avoid duplicates
         for grid_id, grid_values in self._grids.items():
             available_values = positions.fill_with_some_valid_values(grid_values, self._size)
 
@@ -118,11 +117,6 @@ class Sudoku(object):
                 col_id = positions.retrieve_column_id_from_grid_id_and_position(grid_id, position, self._grid_size)
                 self._columns[col_id][row_id] = value
                 self._rows[row_id][col_id] = value
-                '''
-                Copy/paste value per value to avoid references issue (i.e 's.grids()[grid_id] = grid_values' will work 
-                but it will generate further issues with mutation (as parent will also mutate and there are more than 1
-                child per couple)
-                '''
                 self._grids[grid_id][position] = value
         return self
 
@@ -150,10 +144,7 @@ class Sudoku(object):
 
     def fitness(self):
         """
-        The most important function of the program. Here we give a note to the candidate according to the values
-        Basically it is: how many figures are at the right place among the number of figures to find
-        'Right place' = the number of duplicate symbols in rows or columns. Fewer duplicates presumably means a better
-        solution
+        Evaluate the fitness of the objects. The fitness is the number of duplicates in rows and columns
         :return: (int) a score for this candidate, lower it is, better is the candidate
         """
         # Evaluate once per individual
@@ -213,7 +204,7 @@ class Sudoku(object):
         is_fixed = True
         while is_fixed or rand_pos == forbidden_pos:
             rand_pos = randint(0, self._size - 1)
-            # We need to find their position (row and column) in the whole table to check whether it is fixed or not
+            # Need to find their position (row and column) in the whole table to check whether it is fixed or not
             row_id = positions.retrieve_row_id_from_grid_id_and_position(grid_id, rand_pos, self._grid_size)
             col_id = positions.retrieve_column_id_from_grid_id_and_position(grid_id, rand_pos, self._grid_size)
             is_fixed = self._is_fixed(row_id, col_id)

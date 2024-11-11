@@ -18,6 +18,7 @@ To generate a new Sudoku puzzle, use the following command:
 cd sudoku_utils
 python3 generate_board.py
 ```
+The generated board will be saved in the samples directory.
 ## Directory and File Structure
 
 ```
@@ -28,6 +29,13 @@ project
     |_ general_utils (contains general utility functions used for the project)
     main.py (main script to run the program)
     README.md
+    requirements.txt    (list of dependencies)
+```
+## Dependencies
+To install the dependencies, run the following command:
+
+```sh
+pip install -r requirements.txt
 ```
 
 
