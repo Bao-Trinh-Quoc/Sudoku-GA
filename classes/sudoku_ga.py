@@ -87,9 +87,9 @@ class SudokuGA(object):
                     restart_counter += 1
                     break
 
-                # Check if problem is solved and print best and worst results
+                # Check if Sudoku is solved and print best and worst results
                 if best_score > 0:
-                    print("Problem not solved on generation {} (restarted {} times). Best fitness score is {} and "
+                    print("Sudoku not solved on generation {} (restarted {} times). Best fitness score is {} and "
                           "worst is {}".format(nb_generations_done, restart_counter, best_score, worst_score))
                     # Not solved => select a new generation among this ranked population
                     # Retain only the percentage specified by selection rate
@@ -102,14 +102,14 @@ class SudokuGA(object):
                     nb_generations_done += 1
                     overall_nb_generations_done += 1
                 else:
-                    print("Problem solved after {} generations ({} overall generations)!!! Solution found is:".
+                    print("Sudoku solved after {} generations ({} overall generations)!!! Solution found is:".
                           format(nb_generations_done, overall_nb_generations_done))
                     best_solution.display()
                     found = True
                     print("It took {} to solve it".format(tools.get_readable_time(self._start_time, time())))
 
         if not found:
-            print("Problem not solved after {} generations. Printing best and worst results below".
+            print("Sudoku not solved after {} generations. Printing best and worst results below".
                   format(overall_nb_generations_done))
             ranked_population = ga_utils.rank_population(new_population)
             best_solution = ranked_population[0]

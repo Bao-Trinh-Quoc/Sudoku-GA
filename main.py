@@ -39,4 +39,5 @@ if __name__ == '__main__':
 
     sga = SudokuGA(population_size, selection_rate, random_selection_rate, nb_children, max_nb_generations,
                    mutation_rate, model_to_solve, restart_after_n_generations_without_improvement)
+ 
     sga.run()
