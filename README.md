@@ -15,8 +15,7 @@ Adapt the parameters to your needs.
 To generate a new Sudoku puzzle, use the following command:
 
 ```sh
-cd sudoku_utils
-python3 generate_board.py
+python3 sudoku_utils/generate_board.py
 ```
 The generated board will be saved in the samples directory.
 ## Directory and File Structure

@@ -125,7 +125,7 @@ class SudokuGA(object):
     def _load(self):
         """
         Load the file, performs some sanity checks
-        :return: (object) the sudoku puzzle to use
+        :return: (object) the sudoku p  uzzle to use
         """
         if ((self._selection_rate + self._random_selection_rate) / 2) * self._nb_children != 1:
             raise Exception("Either the selection rate, random selection rate or the number of children is not "
